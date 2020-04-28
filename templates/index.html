@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do App!</title>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <br>
+
+
+    <div class="submission">
+        <form action="/submit" method="post">
+            Task: <input type="text" name="Task"><br>
+            Email: <input type="email" name="Email"><br>
+            Priority Level:
+            <select name="Priority Level">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <input type="submit" value="Add Item to To-Do List">
+        </form>
+    </div>
+
+
+    <br>
+    <div class="list_table" align="center">
+        <table border="5" style="width=100%">
+            <thead>
+                <tr>
+                    <th align="center">To Do:</th>
+                    <th align="center">Assigned To:</th>
+                    <th align="center">Priority Level:</th>
+                </tr>
+            </thead>
+            {% for todo in todo_list %}
+            <tr>
+                <td>{{ todo.task }}</td>
+                <td>{{ todo.email }}</td>
+                <td>{{ todo.priority }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+    <div class="clear">
+        <br>
+        <form action="/clear">
+            <input type="submit" value="Clear List">
+        </form>
+    </div>
+</body>
+</html>
